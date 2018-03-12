@@ -1,0 +1,6 @@
+#編集中ファイルの無視
+*.*~
+
+#ds_storeの無視
+.DS_Store
+Thumbs.db
