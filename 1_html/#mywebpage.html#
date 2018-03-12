@@ -1,0 +1,18 @@
+<!DOCTYPE htm>
+<html>
+  <head>
+
+   <title>My webpage</title>
+
+  </head>
+  <body>
+    <p>これは一つ目の段落です。</p>
+    
+    <p>これは2つめの段落です。</p>
+    
+    <p>これは3つ目の段落です。<br>
+    
+    
+  </body>
+
+</html>
