@@ -1,0 +1,118 @@
+;; ロードパス
+
+;;; load-pathを追加する関数を定義
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+
+(package-initialize)
+
+(defun add-to-load-path (&rest paths)
+  (let (path)
+    (dolist (path paths paths)
+     (let ((default-directory (expand-file-name (concat user-emacs-directory path))))
+        (add-to-list 'load-path default-directory)
+         (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+             (normal-top-level-add-subdirs-to-load-path))))))
+
+;;; ディレクトリをサブディレクトリごとload-pathに追加
+(add-to-load-path "elisp")
+
+
+;; ~/.emacs.d/site-lisp 以下全部読み込み
+(let ((default-directory (expand-file-name "~/.emacs.d/elisp")))
+  (add-to-list 'load-path default-directory)
+  (if (fboundp 'normal-top-level-add-subdirs-to-load-path)
+      (normal-top-level-add-subdirs-to-load-path)))
+
+(require 'init-loader)
+(setq init-loader-show-log-after-init nil)
+(init-loader-load "~/.emacs.d/inits")
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flycheck-disabled-checkers (quote (javascript-jshint javascript-jscs)))
+ '(package-selected-packages
+   (quote
+    (web-mode magit auto-complete js2-mode volatile-highlights js-auto-format-mode flycheck))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+(global-hl-line-mode t)                   ;; 現在行をハイライト
+
+(show-paren-mode t)                       ;; 対応する括弧をハイライト
+
+(setq show-paren-style 'mixed)            ;; 括弧のハイライトの設定。
+
+(transient-mark-mode t)                   ;; 選択範囲をハイライト
+
+(load-theme 'misterioso t)
+
+(column-number-mode t)                    ;;カラム番号表示
+
+(size-indication-mode t)                  ;;ファイルサイズを表示
+
+(setq display-time-day-and-date t)
+(display-time-mode t)                     ;;時計を表示
+
+(display-battery-mode t)                  ;;バッテリー表示
+(setq frame-title-format "%f")
+;; volatile-highlights
+(require 'volatile-highlights)
+(volatile-highlights-mode t)
+
+;;flycheck
+(require 'flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+(eval-after-load 'flycheck
+  '(custom-set-variables
+    '(flycheck-disabled-checkers '(javascript-jshint javascript-jscs))))
+
+;;auto-complete設定
+(require 'auto-complete-config)
+(ac-config-default)
+
+(set-language-environment "Japanese")
+
+
+;########################################
+; web-mode setting
+;########################################
+(require 'web-mode)
+
+(add-to-list 'auto-mode-alist '("\\.jsp$"       . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?$"     . web-mode))
+
+(defun web-mode-hook ()
+  "Hooks for Web mode."
+
+  ;; indent
+  (setq web-mode-html-offset   2)
+  (setq web-mode-style-padding 2)
+  (setq web-mode-css-offset    2)
+  (setq web-mode-script-offset 2)
+  (setq web-mode-java-offset   2)
+  (setq web-mode-asp-offset    2)
+
+  (local-set-key (kbd "C-m") 'newline-and-indent)
+  
+  ;; auto tag closing
+  ;0=no auto-closing
+  ;1=auto-close with </
+  ;2=auto-close with > and </
+  (setq web-mode-tag-auto-close-style 2)
+)
+(add-hook 'web-mode-hook 'web-mode-hook)
+
+;円マークをバクスラに
+(define-key global-map [?¥] [?\\])
