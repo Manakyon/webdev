@@ -1,0 +1,11 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Webpage with style</title>
+</head>
+
+<body>
+    <p style="color:blue">今回は、新しくリリースするプロダクトの紹介をします。</p>
+</body>
+</html>
