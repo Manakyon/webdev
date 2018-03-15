@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jQuery</title>
+    <style type="text/css">
+        #fadeInText {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="jquery-3.3.1.min.js"></script>
+
+    <p>このテキストはフェードアウトします</p>
+    <button id="fadeOut">フェードアウトする</button>
+
+    <p id="fadeInText">最初はかくれています</p>
+    <button id="fadeIn">フェイドインする</button>
+
+    <p id="fadeChangeText">フェード切り替え</p>
+    <button id="fadeChange">切り替えます</button>
+    <script type="text/javascript">
+        $("#fadeOut").click(function() {
+            $("p").fadeOut()
+        })
+        $("#fadeIn").click(function() {
+            $("#fadeInText").fadeIn("slow");
+        })
+        $("#fadeChange").click(function() {
+            if ($("#fadeChangeText").css("display") == "none") {
+                $(#te)
+            }
+        })
+    </script>
+
+</body>
+
+</html>
