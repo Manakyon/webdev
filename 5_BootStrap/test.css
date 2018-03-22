@@ -1,0 +1,29 @@
+.jumbotron {
+    background-image: url(anton-darius-thesollers-370048-unsplash.jpg);
+    background-size: cover;
+    background-position: center 40%;
+    color: aliceblue
+}
+
+hr {
+    background-color: aliceblue
+}
+
+p {
+    font-size: 20px;
+}
+
+#footer {
+
+    background-color: aqua;
+    padding-top: 150px;
+    margin-top: 50px;
+    text-align: center;
+    padding-bottom: 150px;
+}
+
+body {
+
+    position: relative;
+
+}

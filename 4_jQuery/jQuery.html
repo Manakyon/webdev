@@ -2,38 +2,43 @@
 <html>
 
 <head>
+    <link href="jQuery-ui/jquery-ui.css" rel="stylesheet">
     <title>jQuery</title>
     <style type="text/css">
-        #fadeInText {
-            display: none;
+        h3 {
+            font-family: serif;
+            font-size: 5px;
+        }
+
+        p {
+            font-size: 3px;
+        }
+
+        #keyaki {
+            list-style-type: :none;
+            margin: 0;
+            padding: 0;
+            width: 60%
+        }
+
+        li {
+            margin: 0 3px 3px 3px;
+
         }
     </style>
 </head>
 
 <body>
     <script src="jquery-3.3.1.min.js"></script>
+    <script src="jQuery-ui/jquery-ui.js"></script>
 
-    <p>このテキストはフェードアウトします</p>
-    <button id="fadeOut">フェードアウトする</button>
+    <ul id="keyaki">
 
-    <p id="fadeInText">最初はかくれています</p>
-    <button id="fadeIn">フェイドインする</button>
+    </ul>
 
-    <p id="fadeChangeText">フェード切り替え</p>
-    <button id="fadeChange">切り替えます</button>
-    <script type="text/javascript">
-        $("#fadeOut").click(function() {
-            $("p").fadeOut()
-        })
-        $("#fadeIn").click(function() {
-            $("#fadeInText").fadeIn("slow");
-        })
-        $("#fadeChange").click(function() {
-            if ($("#fadeChangeText").css("display") == "none") {
-                $(#te)
-            }
-        })
     </script>
+
+
 
 </body>
 
